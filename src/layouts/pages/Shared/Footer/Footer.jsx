@@ -10,7 +10,7 @@ const Footer = () => {
                         <img src={logo} alt="Website Logo" className="h-8 mr-2" />
                         <h1 className="text-lg font-bold">EliteSportsAcademy</h1>
                     </div>
-                    <p className="mt-2 text-sm">A brief tagline or description about your website.</p>
+                    <p className="mt-2 text-sm">Unleash your athletic potential at EliteSportsAcademy. Experience top-notch training, personalized coaching, and a culture of excellence. Achieve greatness on and off the field.</p>
                 </div>
                 <div className="flex flex-col items-center md:items-start">
                     <h2 className="text-lg font-semibold">Contact Us</h2>
