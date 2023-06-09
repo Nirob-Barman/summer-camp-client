@@ -9,6 +9,8 @@ import { Toaster } from 'react-hot-toast'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <AuthProvider>
     <Toaster />
-    <RouterProvider router={router} />
+    <div className="max-w-screen-xl mx-auto">
+      <RouterProvider router={router} />
+    </div>
   </AuthProvider>
 )
