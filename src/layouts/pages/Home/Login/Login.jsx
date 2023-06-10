@@ -1,8 +1,9 @@
 import { useContext } from "react";
-import { AuthContext } from "../../../../providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
+import { AuthContext } from "../../../../providers/AuthProvider";
 
 const Login = () => {
     const { signIn } = useContext(AuthContext);
@@ -35,14 +36,14 @@ const Login = () => {
 
     return (
         <>
-            {/* <Helmet>
+            <Helmet>
                 <title>ESA | Login</title>
-            </Helmet> */}
+            </Helmet>
 
             <div className="container mx-auto flex justify-center items-center min-h-screen">
                 <div className="max-w-md w-full">
                     <h1 className="text-5xl font-bold text-center">Login now!</h1>
-                    
+
                     <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                         <form onSubmit={handleLogin}>
                             <div className="mb-4">
@@ -90,6 +91,7 @@ const Login = () => {
                                 >
                                     Login
                                 </button>
+                                <SocialLogin />
                             </div>
                         </form>
                     </div>
@@ -105,3 +107,4 @@ const Login = () => {
 };
 
 export default Login;
+
