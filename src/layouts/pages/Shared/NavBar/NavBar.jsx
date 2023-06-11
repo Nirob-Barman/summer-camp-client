@@ -16,6 +16,15 @@ const NavBar = () => {
     const navOptions = (
         <>
             <li><Link to="/">Home</Link></li>
+
+            <li>
+                <Link to="/dashboard/mycart">
+                    <button className="btn gap-2">
+                        DashBoard
+                    </button>
+                </Link>
+            </li>
+
             {
                 user && user?.displayName
             }
@@ -27,6 +36,8 @@ const NavBar = () => {
                     <li><Link to="/login">Login</Link></li>
                 </>
             }
+
+
         </>
     );
 
