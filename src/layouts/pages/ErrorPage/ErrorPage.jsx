@@ -20,7 +20,7 @@ const ErrorPage = () => {
             </p>
             <Link to="/" className="btn btn-primary mt-8" >Back to Home</Link>
             <Link className="btn btn-primary m-1" onClick={goBack}>Go Back to the previous page</Link>
-            
+
         </div >
     );
 };
