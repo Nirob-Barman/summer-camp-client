@@ -11,7 +11,9 @@ const ErrorPage = () => {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-200">
             <h1 className="text-6xl font-bold text-red-500 mb-4 animate-spin">
-                4<span className="animate-bounce">0</span>4
+                <span className="animate-pulse">4</span>
+                <span className="animate-bounce">0</span>
+                <span className="animate-pulse">4</span>
             </h1>
             <p className="text-2xl text-gray-600">
                 Oops! The page you are looking for does not exist.
