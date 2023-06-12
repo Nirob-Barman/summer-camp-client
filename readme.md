@@ -1,6 +1,7 @@
 # EliteSportsAcademy
 
 
+## Website Features
 
 #### Used packages/ technology name
 - React
@@ -21,7 +22,7 @@
 - DaisyUI
 
 
-
+[Live site link]()
 
 
 
