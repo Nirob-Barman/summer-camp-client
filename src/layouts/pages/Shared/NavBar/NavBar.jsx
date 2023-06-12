@@ -16,22 +16,27 @@ const NavBar = () => {
     const navOptions = (
         <>
             <li><Link to="/">Home</Link></li>
+            <li><Link to="/instructors">Instructors</Link></li>
+            <li><Link to="/classes">Classes</Link></li>
+            <li><Link to="/class">Class</Link></li>
+
 
             <li>
                 <Link to="/dashboard/mycart">
-                    <button className="btn gap-2">
-                        DashBoard
-                    </button>
+                    DashBoard
                 </Link>
             </li>
 
+            <li>
             {
                 user && user?.displayName
             }
+            </li>
 
             {
                 user ? <>
-                    <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
+                    <li onClick={handleLogOut}><Link to="/">LogOut</Link></li>
+                    {/* <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button> */}
                 </> : <>
                     <li><Link to="/login">Login</Link></li>
                 </>

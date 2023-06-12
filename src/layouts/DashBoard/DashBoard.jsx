@@ -14,6 +14,7 @@ const Dashboard = () => {
     const user = true;
     // const user = 'admin';
     // const user = 'instructor';
+    
 
 
     return (
@@ -52,6 +53,7 @@ const Dashboard = () => {
                         </>
                     }
 
+                    <li><NavLink to="/"><FaHome></FaHome>Home Page</NavLink></li>
                     <li><a>Sidebar Item </a></li>
                     <li><a>Sidebar Item </a></li>
                 </ul>

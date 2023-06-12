@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const SignUp = () => {
     const {
@@ -32,43 +33,43 @@ const SignUp = () => {
             const loggedUser = result.user;
             console.log(loggedUser);
 
-            reset();
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'User created successfully.',
-                showConfirmButton: false,
-                timer: 1500
-            });
-            navigate('/');
-
+            // reset();
+            // Swal.fire({
+            //     position: 'top-end',
+            //     icon: 'success',
+            //     title: 'User created successfully.',
+            //     showConfirmButton: false,
+            //     timer: 1500
+            // });
+            // navigate('/');
 
             updateUserProfile(data.name, data.photoURL)
                 .then(() => {
                     const saveUser = { name: data.name, email: data.email };
-                    // console.log("User updated", saveUser);
-                    
-                    // fetch('https://bistro-boss-server-fawn.vercel.app/users', {
-                    //     method: 'POST',
-                    //     headers: {
-                    //         'content-type': 'application/json'
-                    //     },
-                    //     body: JSON.stringify(saveUser)
-                    // })
-                    //     .then(res => res.json())
-                    //     .then(data => {
-                    //         if (data.insertedId) {
-                    //             reset();
-                    //             Swal.fire({
-                    //                 position: 'top-end',
-                    //                 icon: 'success',
-                    //                 title: 'User created successfully.',
-                    //                 showConfirmButton: false,
-                    //                 timer: 1500
-                    //             });
-                    //             navigate('/');
-                    //         }
-                    //     })
+                    console.log("User updated", saveUser);
+
+                    fetch('http://localhost:5000/users', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(saveUser)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.insertedId) {
+                                reset();
+                                Swal.fire({
+                                    // position: 'top-end',
+                                    position: 'center',
+                                    icon: 'success',
+                                    title: 'User created successfully.',
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                });
+                                navigate('/');
+                            }
+                        })
                 })
                 .catch((error) => console.log(error));
         });
@@ -188,6 +189,7 @@ const SignUp = () => {
                         Login
                     </Link>
                 </p>
+                <SocialLogin />
             </div>
         </div>
     );

@@ -6,6 +6,10 @@ import SignUp from '../layouts/pages/SignUp/SignUp'
 import Dashboard from '../layouts/DashBoard/DashBoard'
 import MyCart from '../layouts/DashBoard/MyCart'
 import AllUser from '../layouts/DashBoard/AllUser'
+import InstructorsPage from '../layouts/pages/InstructorsPage/InstructorsPage'
+import ClassesPage from '../layouts/pages/ClassesPage/ClassesPage'
+import Class from '../layouts/pages/ClassesPage/Class'
+import PrivateRoute from './PrivateRoute'
 
 export const router = createBrowserRouter([
   {
@@ -15,6 +19,18 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
+      },
+      {
+        path: 'instructors',
+        element: <InstructorsPage />
+      },
+      {
+        path: 'classes',
+        element: <ClassesPage />
+      },
+      {
+        path: 'class',
+        element: <PrivateRoute><Class /></PrivateRoute>
       },
       {
         path: '/login',
