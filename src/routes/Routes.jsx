@@ -10,11 +10,13 @@ import InstructorsPage from '../layouts/pages/InstructorsPage/InstructorsPage'
 import ClassesPage from '../layouts/pages/ClassesPage/ClassesPage'
 import Class from '../layouts/pages/ClassesPage/Class'
 import PrivateRoute from './PrivateRoute'
+import ErrorPage from '../layouts/pages/ErrorPage/ErrorPage'
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <Main />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/',
