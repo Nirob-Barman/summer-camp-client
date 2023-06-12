@@ -16,15 +16,9 @@ const ErrorPage = () => {
             <p className="text-2xl text-gray-600">
                 Oops! The page you are looking for does not exist.
             </p>
-            <Link
-                to="/"
-                className="btn btn-primary mt-8"
-            >
-                Back to Home
-            </Link>
-            <button className="btn btn-primary mt-8" onClick={goBack}>
-                Go Back to the previous page
-            </button>
+            <Link to="/" className="btn btn-primary mt-8" >Back to Home</Link>
+            <Link className="btn btn-primary m-1" onClick={goBack}>Go Back to the previous page</Link>
+            
         </div >
     );
 };

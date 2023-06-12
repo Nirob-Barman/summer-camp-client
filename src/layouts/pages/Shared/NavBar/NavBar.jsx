@@ -28,9 +28,9 @@ const NavBar = () => {
             </li>
 
             <li>
-            {
-                user && user?.displayName
-            }
+                {
+                    user && <Link to='/about'>{user?.displayName}</Link>
+                }
             </li>
 
             {
@@ -71,7 +71,10 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Get started</a>
+                {/* <a className="btn">Get started</a> */}
+                {
+                    user?.email
+                }
             </div>
         </div>
     );

@@ -11,6 +11,10 @@ import ClassesPage from '../layouts/pages/ClassesPage/ClassesPage'
 import Class from '../layouts/pages/ClassesPage/Class'
 import PrivateRoute from './PrivateRoute'
 import ErrorPage from '../layouts/pages/ErrorPage/ErrorPage'
+import About from '../layouts/pages/About/About'
+import AdminDashboard from '../layouts/DashBoard/AdminDashboard'
+import InstructorDashboard from '../layouts/DashBoard/InstructorDashboard'
+import UserDashboard from '../layouts/DashBoard/UserDashboard'
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +45,10 @@ export const router = createBrowserRouter([
       {
         path: 'signup',
         element: <SignUp />
+      },
+      {
+        path: '/about',
+        element: <About />
       }
     ]
   },
@@ -56,6 +64,18 @@ export const router = createBrowserRouter([
         path: 'allusers',
         element: <AllUser />
 
+      },
+      {
+        path: 'adminhome',
+        element: <AdminDashboard />
+      },
+      {
+        path: 'instructorhome',
+        element: <InstructorDashboard />
+      },
+      {
+        path: 'userhome',
+        element: <UserDashboard />
       }
     ]
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 // import { useQuery } from 'react-query';
 // import useAxiosSecure from 'path/to/useAxiosSecure';
 
@@ -34,6 +35,11 @@ const InstructorsPage = () => {
 
     return (
         <div>
+
+            <Helmet>
+                <title>ESA | InstructorsPage</title>
+            </Helmet>
+
             <h1 className='pt-20'>Instructors</h1>
             {instructors.map((instructor) => (
                 <div key={instructor.id} className="my-6 p-4 border">

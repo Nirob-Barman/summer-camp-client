@@ -9,7 +9,7 @@ const Home = () => {
             <Helmet>
                 <title>ESA | Home</title>
             </Helmet>
-            <div className="pt-20">
+            <div className="py-2">
                 <SummerCampSection />
             </div>
             <Banner />
