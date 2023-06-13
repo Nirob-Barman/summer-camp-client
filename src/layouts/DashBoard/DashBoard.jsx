@@ -5,6 +5,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 // import useCart from "../hooks/useCart";
 
 
+
 const Dashboard = () => {
 
     const navigate = useNavigate();
@@ -30,8 +31,8 @@ const Dashboard = () => {
 
 
     // const userRole = true;
-    const userRole = 'admin';
-    // const userRole = 'instructor';
+    // const userRole = 'admin';
+    const userRole = 'instructor';
 
 
     return (
@@ -64,7 +65,7 @@ const Dashboard = () => {
                                     instructor dashboard
 
                                     <li><NavLink to="/dashboard/instructorhome"><FaHome></FaHome>Instructor Home</NavLink></li>
-                                    <li><NavLink to="/dashboard/reservations"><FaAddressCard /> Add a Class</NavLink></li>
+                                    <li><NavLink to="/dashboard/addclasses"><FaAddressCard /> Add a Class</NavLink></li>
                                     <li><NavLink to="/dashboard/history"><FaWallet></FaWallet> My Classes</NavLink></li>
 
                                 </> : <>

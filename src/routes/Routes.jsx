@@ -15,6 +15,8 @@ import About from '../layouts/pages/About/About'
 import AdminDashboard from '../layouts/DashBoard/AdminDashboard'
 import InstructorDashboard from '../layouts/DashBoard/InstructorDashboard'
 import UserDashboard from '../layouts/DashBoard/UserDashboard'
+import ManageUsers from '../layouts/DashBoard/AdminPanel/ManageUsers'
+import AddClasses from '../layouts/DashBoard/InstructorPanel/AddClasses'
 
 export const router = createBrowserRouter([
   {
@@ -63,15 +65,22 @@ export const router = createBrowserRouter([
       {
         path: 'allusers',
         element: <AllUser />
-
       },
       {
         path: 'adminhome',
         element: <AdminDashboard />
       },
       {
+        path: '/dashboard/manageusers',
+        element: <ManageUsers />
+      },
+      {
         path: 'instructorhome',
         element: <InstructorDashboard />
+      },
+      {
+        path: '/dashboard/addclasses',
+        element: <AddClasses />
       },
       {
         path: 'userhome',

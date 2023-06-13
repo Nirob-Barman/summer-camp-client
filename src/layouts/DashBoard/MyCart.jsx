@@ -3,7 +3,8 @@ import React from 'react';
 const MyCart = () => {
     return (
         <div>
-            welcome to your dashboard
+            {/* As an admin, you have various responsibilities and privileges to manage the system or application */}
+            Welcome to your dashboard
         </div>
     );
 };
