@@ -1,10 +1,42 @@
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaUtensils, FaBook, FaUsers, FaFastBackward, FaAddressCard, FaFastForward, FaUserSecret } from 'react-icons/fa';
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import { allusers } from "../../apis/auth";
+import { AuthContext } from "../../providers/AuthProvider";
 // import useCart from "../hooks/useCart";
 
 
 const Dashboard = () => {
+
+    const { user } = useContext(AuthContext);
+    // console.log(user.email);
+    // console.log('DashBoard User',user);
+    // console.log(user.displayName);
+    // console.log(user.email);
+
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        allusers()
+            .then(users => {
+                setUsers(users)
+            })
+    }, []);
+
+    let userRole = '';
+    // console.log(users);
+    // let roles = '';
+    // console.log('roles before updating', roles);
+    {
+        users.map(findUser => {
+            if (findUser.email === user.email) {
+                // roles = findUser.role;
+                userRole = findUser.role;
+            }
+        })
+    }
+    // console.log('After updating', roles);
+
 
     const navigate = useNavigate();
 
@@ -20,13 +52,11 @@ const Dashboard = () => {
     // const isAdmin = false;
     // const isAdmin = true;
 
-
     // const user = 'admin';
     // const user = 'instructor';
 
-
     // const userRole = true;
-    const userRole = 'admin';
+    // const userRole = 'admin';
     // const userRole = 'instructor';
 
 
@@ -35,7 +65,9 @@ const Dashboard = () => {
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col items-center justify-center">
                 <Outlet />
-                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">
+                    Open drawer
+                </label>
 
             </div>
             <div className="drawer-side">
@@ -73,7 +105,6 @@ const Dashboard = () => {
                                             {/* <span className="badge inl badge-secondary">+{cart?.length || 0}</span> */}
                                         </NavLink>
                                     </li>
-
                                 </>
                             }
                         </>

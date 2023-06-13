@@ -6,7 +6,7 @@ export const saveUser = user => {
         email: user.email,
         name: user.displayName,
         image: user.photoURL,
-        role: '',
+        role: "student",
     };
 
     axios
@@ -26,7 +26,7 @@ export const saveUser = user => {
 //         email: user.email,
 //         name: user.displayName,
 //         image: user.photoURL,
-//         role: '',
+//         role: "student",
 //     }
 
 //     fetch(`http://localhost:5000/users/${user?.email}`, {
@@ -49,7 +49,7 @@ export const allusers = async () => {
 };
 
 
-// Host
+// Instructor Role
 export const becomeInstructor = email => {
     const currentUser = {
         role: 'instructor',

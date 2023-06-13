@@ -17,6 +17,7 @@ import InstructorDashboard from '../layouts/DashBoard/InstructorDashboard'
 import UserDashboard from '../layouts/DashBoard/UserDashboard'
 import ManageUsers from '../layouts/DashBoard/AdminPanel/ManageUsers'
 import AddClasses from '../layouts/DashBoard/InstructorPanel/AddClasses'
+import ManageClasses from '../layouts/DashBoard/AdminPanel/ManageClasses'
 
 export const router = createBrowserRouter([
   {
@@ -56,7 +57,7 @@ export const router = createBrowserRouter([
   },
   {
     path: 'dashboard',
-    element: <Dashboard />,
+    element: <PrivateRoute><Dashboard /></PrivateRoute>,
     children: [
       {
         path: 'mycart',
@@ -73,6 +74,10 @@ export const router = createBrowserRouter([
       {
         path: '/dashboard/manageusers',
         element: <ManageUsers />
+      },
+      {
+        path: '/dashboard/manageclasses',
+        element: <ManageClasses />
       },
       {
         path: 'instructorhome',
