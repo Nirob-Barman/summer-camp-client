@@ -1,9 +1,7 @@
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaUtensils, FaBook, FaUsers, FaFastBackward, FaAddressCard, FaFastForward, FaUserSecret } from 'react-icons/fa';
 import { useContext } from "react";
-import { AuthContext } from "../../providers/AuthProvider";
 // import useCart from "../hooks/useCart";
-
 
 
 const Dashboard = () => {
@@ -17,7 +15,6 @@ const Dashboard = () => {
     //     window.history.back();
     // };
 
-
     // const [cart] = useCart();
 
     // const isAdmin = false;
@@ -28,11 +25,9 @@ const Dashboard = () => {
     // const user = 'instructor';
 
 
-
-
     // const userRole = true;
-    // const userRole = 'admin';
-    const userRole = 'instructor';
+    const userRole = 'admin';
+    // const userRole = 'instructor';
 
 
     return (

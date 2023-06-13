@@ -119,31 +119,31 @@ const ManageUsers = () => {
         // </div>
 
         <div>
-            <h2 class="text-2xl font-bold mb-4 text-center">Manage Users</h2>
+            <h2 className="text-2xl font-bold mb-4 text-center">Manage Users</h2>
             {users.length === 0 ? (
                 <p>No users found.</p>
             ) : (
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     {users.map((user) => (
-                        <div key={user.id} class="bg-white border border-gray-200 rounded shadow">
-                            <div class="p-4">
-                                <h3 class="text-lg font-semibold">{user.name}</h3>
-                                <p class="text-gray-600">{user.email}</p>
-                                <p class="mt-2">
-                                    Role: <span class="font-semibold">{user.role}</span>
+                        <div key={user._id} className="bg-white border border-gray-200 rounded shadow">
+                            <div className="p-4">
+                                <h3 className="text-lg font-semibold">{user.name}</h3>
+                                <p className="text-gray-600">{user.email}</p>
+                                <p className="mt-2">
+                                    Role: <span className="font-semibold">{user.role}</span>
                                 </p>
-                                <div class="mt-4 flex justify-center space-x-2">
+                                <div className="mt-4 flex justify-center space-x-2">
                                     <button
                                         onClick={() => handleMakeInstructor(user.email)}
                                         disabled={user.role === "instructor"}
-                                        class="px-4 py-2 rounded-md bg-green-500 text-white disabled:bg-gray-400 hover:bg-green-600"
+                                        className="px-4 py-2 rounded-md bg-green-500 text-white disabled:bg-gray-400 hover:bg-green-600"
                                     >
                                         Make Instructor
                                     </button>
                                     <button
                                         onClick={() => handleMakeAdmin(user.email)}
                                         disabled={user.role === "admin"}
-                                        class="px-4 py-2 rounded-md bg-blue-500 text-white disabled:bg-gray-400 hover:bg-blue-600"
+                                        className="px-4 py-2 rounded-md bg-blue-500 text-white disabled:bg-gray-400 hover:bg-blue-600"
                                     >
                                         Make Admin
                                     </button>
