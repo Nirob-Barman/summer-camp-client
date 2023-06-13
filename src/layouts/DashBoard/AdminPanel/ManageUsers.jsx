@@ -130,7 +130,7 @@ const ManageUsers = () => {
                                 <h3 className="text-lg font-semibold">{user.name}</h3>
                                 <p className="text-gray-600">{user.email}</p>
                                 <p className="mt-2">
-                                    Role: <span className="font-semibold">{user.role}</span>
+                                    Role: <span className="font-semibold">{user?.role || 'student'}</span>
                                 </p>
                                 <div className="mt-4 flex justify-center space-x-2">
                                     <button
