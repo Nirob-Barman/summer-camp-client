@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getAllClasses } from "../../../apis/classeapi";
+import { approveClass, getAllClasses } from "../../../apis/classeapi";
 
 const ManageClasses = () => {
     const [classes, setClasses] = useState([]);
@@ -8,56 +8,33 @@ const ManageClasses = () => {
     const [modalOpen, setModalOpen] = useState(false);
 
     useEffect(() => {
-        // Fetch all classes from the API
         getAllClasses()
             .then((classes) => {
                 setClasses(classes);
             })
             .catch((error) => {
                 console.error(error);
-                // Handle the error here, such as showing an error message or performing any necessary actions
             });
-    }, []);
-
+    }, [classes]);
 
     const handleApproveClass = (classId) => {
-        // Update class status to approved in the database
-        updateClassStatus(classId, "approved")
-            .then(() => {
-                // Update class status in the local state
-                setClasses((prevClasses) =>
-                    prevClasses.map((classItem) =>
-                        classItem.id === classId
-                            ? { ...classItem, status: "approved" }
-                            : classItem
-                    )
-                );
-            })
-            .catch((error) => {
-                console.error("Error updating class status:", error);
-            });
+        // Update class status to "approved" in the database
+        approveClass(classId);
+        console.log(classId);
     };
 
     const handleDenyClass = (classId) => {
-        // Update class status to denied in the database
-        updateClassStatus(classId, "denied")
-            .then(() => {
-                // Update class status in the local state
-                setClasses((prevClasses) =>
-                    prevClasses.map((classItem) =>
-                        classItem.id === classId
-                            ? { ...classItem, status: "denied" }
-                            : classItem
-                    )
-                );
-            })
-            .catch((error) => {
-                console.error("Error updating class status:", error);
-            });
+
+
+    };
+
+    const handleSendFeedback = () => {
+
+
     };
 
     const handleOpenModal = (classId) => {
-        // Set the selected class
+
         const selected = classes.find((classItem) => classItem.id === classId);
         setSelectedClass(selected);
         setModalOpen(true);
@@ -69,24 +46,8 @@ const ManageClasses = () => {
         setModalOpen(false);
     };
 
-    const handleSendFeedback = () => {
-        // Send feedback to the instructor
-        sendFeedback(selectedClass.id, feedback)
-            .then(() => {
-                // Update class feedback in the local state
-                setClasses((prevClasses) =>
-                    prevClasses.map((classItem) =>
-                        classItem.id === selectedClass.id
-                            ? { ...classItem, feedback }
-                            : classItem
-                    )
-                );
-                handleCloseModal();
-            })
-            .catch((error) => {
-                console.error("Error sending feedback:", error);
-            });
-    };
+
+    console.log(classes)
 
     return (
         <div>
