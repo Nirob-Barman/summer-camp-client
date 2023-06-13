@@ -44,3 +44,15 @@ export const deleteClass = async id => {
     const result = await response.json()
     return result
 }
+
+
+// approve class status
+export const approveClass = (classId) => {
+    return fetch(`http://localhost:5000/classes/${classId}`, {
+        method: "PATCH",
+        headers: {
+            "content-type": "application/json",
+        },
+    })
+        .then((res) => res.json())
+};
