@@ -2,6 +2,9 @@
 export const saveUser = user => {
     const currentUser = {
         email: user.email,
+        name: user.displayName,
+        image: user.photoURL,
+        role: '',
     }
 
     fetch(`http://localhost:5000/users/${user?.email}`, {
@@ -15,7 +18,7 @@ export const saveUser = user => {
         .then(data => console.log(data))
 }
 
-// become a host
+// Host
 export const becomeInstructor = email => {
     const currentUser = {
         role: 'instructor',
@@ -32,7 +35,11 @@ export const becomeInstructor = email => {
 
 // Get role
 export const getRole = async email => {
-    const response = await fetch(`http://localhost:5000/users/${email}`)
-    const user = await response.json()
-    return user?.role
-}
+    try {
+        const response = await fetch(`http://localhost:5000/users/${email}`);
+        const user = await response.json();
+        return user?.role;
+    } catch (error) {
+        console.error("Error parsing JSON:", error);
+    }
+};

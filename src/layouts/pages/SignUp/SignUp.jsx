@@ -1,10 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
+import { saveUser } from "../../../apis/auth";
 
 const SignUp = () => {
     const {
@@ -17,6 +18,10 @@ const SignUp = () => {
     const [error, setError] = useState("");
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/";
+
 
     const password = watch("password", ""); // Get the value of the password field
     const confirmPasswordErrorMessage = "Passwords do not match"; // Error message for confirm password validation
@@ -45,33 +50,37 @@ const SignUp = () => {
 
             updateUserProfile(data.name, data.photoURL)
                 .then(() => {
-                    const saveUser = { name: data.name, email: data.email };
-                    console.log("User updated", saveUser);
 
-                    fetch('http://localhost:5000/users', {
-                        method: 'POST',
-                        headers: {
-                            'content-type': 'application/json'
-                        },
-                        body: JSON.stringify(saveUser)
-                    })
-                        .then(res => res.json())
-                        .then(data => {
-                            if (data.insertedId) {
-                                reset();
-                                Swal.fire({
-                                    // position: 'top-end',
-                                    position: 'center',
-                                    icon: 'success',
-                                    title: 'User created successfully.',
-                                    showConfirmButton: false,
-                                    timer: 1500,
-                                });
-                                navigate('/');
-                            }
-                        })
+                    saveUser(loggedUser);
+                    navigate(from, { replace: true });
+
+                    // const saveUser = { name: data.name, email: data.email };
+                    // console.log("User updated", saveUser);
+
+                    // fetch('http://localhost:5000/users', {
+                    //     method: 'POST',
+                    //     headers: {
+                    //         'content-type': 'application/json'
+                    //     },
+                    //     body: JSON.stringify(saveUser)
+                    // })
+                    //     .then(res => res.json())
+                    //     .then(data => {
+                    //         if (data.insertedId) {
+                    //             reset();
+                    //             Swal.fire({
+                    //                 // position: 'top-end',
+                    //                 position: 'center',
+                    //                 icon: 'success',
+                    //                 title: 'User created successfully.',
+                    //                 showConfirmButton: false,
+                    //                 timer: 1500,
+                    //             });
+                    //             navigate('/');
+                    //         }
+                    //     })
                 })
-                .catch((error) => console.log(error));
+                .catch((error) => console.log(error))
         });
     };
 
