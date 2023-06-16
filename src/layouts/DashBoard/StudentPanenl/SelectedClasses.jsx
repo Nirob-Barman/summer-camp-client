@@ -3,6 +3,7 @@ import { AuthContext } from '../../../providers/AuthProvider';
 import { deleteBooking, getBookings, getPayment } from '../../../apis/bookings';
 import { useNavigate } from 'react-router-dom';
 import toast from "react-hot-toast";
+import { Helmet } from 'react-helmet';
 
 const SelectedClasses = () => {
     const [selectedClasses, setSelectedClasses] = useState([]);
@@ -55,6 +56,11 @@ const SelectedClasses = () => {
     return (
 
         <div className="max-w-2xl mx-auto my-8">
+
+            <Helmet>
+                <title>ESA | Class Selection</title>
+            </Helmet>
+
             <h2 className="text-2xl font-bold mb-4 text-center">My Selected Classes</h2>
             {selectedClasses.length === 0 ? (
                 <p className="text-center font-bold text-xl text-red-800">No selected classes found.</p>

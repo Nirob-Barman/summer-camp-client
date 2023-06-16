@@ -45,14 +45,14 @@ const AddClasses = () => {
 
     return (
 
-        // 
+
         <div className="bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-lg mx-auto">
                 <h2 className="text-3xl font-extrabold text-gray-900 mb-8 text-center">
                     Add a Class
                 </h2>
-                <form onSubmit={handleAddClass} className="grid grid-cols-2 gap-6">
-                    <div className="col-span-1">
+                <form onSubmit={handleAddClass} className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                    <div>
                         <label className="text-sm font-medium text-gray-700">Class Name</label>
                         <input
                             type="text"
@@ -61,7 +61,7 @@ const AddClasses = () => {
                             className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         />
                     </div>
-                    <div className="col-span-1">
+                    <div>
                         <label className="text-sm font-medium text-gray-700">Available Seats</label>
                         <input
                             type="text"
@@ -70,7 +70,7 @@ const AddClasses = () => {
                             className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         />
                     </div>
-                    <div className="col-span-1">
+                    <div>
                         <label className="text-sm font-medium text-gray-700">Price</label>
                         <input
                             type="text"
@@ -79,7 +79,7 @@ const AddClasses = () => {
                             className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         />
                     </div>
-                    <div className="col-span-1">
+                    <div>
                         <label className="text-sm font-medium text-gray-700">Description</label>
                         <input
                             type="text"
@@ -88,7 +88,7 @@ const AddClasses = () => {
                             className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         />
                     </div>
-                    <div className="col-span-2">
+                    <div>
                         <label className="text-sm font-medium text-gray-700">Instructor Name</label>
                         <input
                             type="text"
@@ -97,7 +97,7 @@ const AddClasses = () => {
                             className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         />
                     </div>
-                    <div className="col-span-2">
+                    <div>
                         <label className="text-sm font-medium text-gray-700">Instructor's Email</label>
                         <input
                             type="text"
@@ -106,7 +106,7 @@ const AddClasses = () => {
                             className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         />
                     </div>
-                    <div className="col-span-2">
+                    <div>
                         <label className="text-sm font-medium text-gray-700">Photo URL</label>
                         <input
                             type="text"
@@ -115,18 +115,20 @@ const AddClasses = () => {
                             className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         />
                     </div>
-                    <div className="col-span-2 flex justify-center">
-                        <button
-                            type="submit"
-                            className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm  bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        >
-                            Add Class
-                        </button>
+                    <div className="sm:col-span-2">
+                        <div className="flex justify-center">
+                            <button
+                                type="submit"
+                                className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            >
+                                Add Class
+                            </button>
+                        </div>
                     </div>
-
                 </form>
             </div>
         </div>
+
 
 
 
