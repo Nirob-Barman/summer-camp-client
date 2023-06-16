@@ -23,6 +23,7 @@ import InstructorDashboard from '../layouts/DashBoard/InstructorPanel/Instructor
 import StudentDashboard from '../layouts/DashBoard/StudentPanenl/StudentDashboard'
 import AdminDashboard from '../layouts/DashBoard/AdminPanel/AdminDashboard'
 import Login from '../layouts/pages/Login/Login'
+import PaymentPage from '../layouts/DashBoard/StudentPanenl/Payment/PaymentPage'
 
 export const router = createBrowserRouter([
   {
@@ -111,6 +112,10 @@ export const router = createBrowserRouter([
       {
         path: '/dashboard/enrolled',
         element: <EnrolledClasses />
+      },
+      {
+        path: '/dashboard/payment',
+        element: <PaymentPage />
       }
     ]
   }

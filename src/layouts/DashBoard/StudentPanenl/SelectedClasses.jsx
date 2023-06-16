@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { deleteBooking, getBookings, getPayment } from '../../../apis/bookings';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import toast from "react-hot-toast";
 import { Helmet } from 'react-helmet';
 
@@ -81,13 +81,14 @@ const SelectedClasses = () => {
                                         >
                                             Delete
                                         </button>
-                                        <button
-                                            className={`px-3 py-2 rounded-md ${classItem?.status === "paid" ? "bg-green-500" : "bg-blue-500"} text-white`}
-                                            onClick={() => handlePayment(classItem._id, classItem.classid)}
-                                            disabled={classItem?.status === "paid"}
-                                        >
-                                            {classItem?.status === "paid" ? "Paid" : "Pay"}
-                                        </button>
+                                        <Link to={`/dashboard/payment`}>
+                                            <button
+                                                className="px-3 py-2 rounded-md bg-blue-500 text-white"
+                                                disabled={classItem?.status === "paid"}
+                                            >
+                                                {classItem?.status === "paid" ? "paid" : "pay"}
+                                            </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
