@@ -61,7 +61,8 @@ export const getBookings = async (email) => {
 };
 
 // payment status
-export const getPayment = async (bookingId, classID) => {
+export const getPayment = async (bookingId) => {
+
 
     // Fetch the current class details
     //  const response = await fetch(`https://smc-server.vercel.app/classes/${classID}`);
@@ -88,6 +89,7 @@ export const getPayment = async (bookingId, classID) => {
     //payment status update
     const currentStatus = {
         status: "paid",
+
     };
 
     return fetch(`https://smc-server.vercel.app/bookings/${bookingId}`, {
