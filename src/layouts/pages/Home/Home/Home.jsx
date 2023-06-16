@@ -2,12 +2,12 @@ import React from 'react';
 import Banner from './Banner/Banner';
 // import SummerCampSection from '../../Home/Home/SummerCampSection/SummerCampSection';
 import { Helmet } from 'react-helmet';
-import Testimonials from '../../Testimonials/Testimonials';
 import ContactAndSupport from './ContactAndSupport/ContactAndSupport';
 import EventCalendar from './EventCalendar/EventCalendar';
 import NewsAndUpdates from './NewsAndUpdates/NewsAndUpdates';
 import SocialMediaIntegration from './SocialMediaIntegration/SocialMediaIntegration';
 import CoachingStaffAndFacilities from './CoachingStaffAndFacilities/CoachingStaffAndFacilities';
+import Testimonials from './Testimonials/Testimonials';
 
 const Home = () => {
     return (
