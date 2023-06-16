@@ -1,30 +1,22 @@
 import { useState, useEffect } from 'react';
-import { allusers, becomeInstructor, becomeAdmin } from '../../../apis/auth';
+import { allusers } from '../../../apis/auth';
+
 
 const ManageUsers = () => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        allusers()
-            .then(users => {
-                setUsers(users)
-            })
+        allusers().then((users) => {
+            setUsers(users);
+        });
     }, [users]);
 
-    // Update the user's role as an instructor in the database
-
     const handleMakeInstructor = (email) => {
-
         becomeInstructor(email);
-
     };
 
-    // Update the user's role as an admin in the database
-
     const handleMakeAdmin = (email) => {
-
         becomeAdmin(email);
-
     };
 
     return (

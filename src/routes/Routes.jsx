@@ -19,6 +19,9 @@ import ManageUsers from '../layouts/DashBoard/AdminPanel/ManageUsers'
 import AddClasses from '../layouts/DashBoard/InstructorPanel/AddClasses'
 import ManageClasses from '../layouts/DashBoard/AdminPanel/ManageClasses'
 import Dash from '../layouts/DashBoard/Dash'
+import SelectedClasses from '../layouts/DashBoard/StudentPanenl/SelectedClasses'
+import EnrolledClasses from '../layouts/DashBoard/StudentPanenl/EnrolledClasses'
+import MyClasses from '../layouts/DashBoard/InstructorPanel/MyClasses'
 
 export const router = createBrowserRouter([
   {
@@ -93,8 +96,20 @@ export const router = createBrowserRouter([
         element: <AddClasses />
       },
       {
+        path: '/dashboard/myclasses',
+        element: <MyClasses/>
+      },
+      {
         path: 'userhome',
         element: <UserDashboard />
+      },
+      {
+        path: '/dashboard/classes',
+        element: <SelectedClasses />
+      },
+      {
+        path: '/dashboard/enrolled',
+        element: <EnrolledClasses />
       }
     ]
   }

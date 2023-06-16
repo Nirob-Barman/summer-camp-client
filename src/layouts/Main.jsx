@@ -44,6 +44,7 @@ const Main = () => {
     <div toggleTheme={toggleTheme} className={isDarkTheme ? "dark-theme" : "light-theme"}>
 
       <NavBar />
+
       <div className="text-center">
         <button onClick={toggleTheme} className="pt-20 theme-toggle-btn">
           Toggle Theme

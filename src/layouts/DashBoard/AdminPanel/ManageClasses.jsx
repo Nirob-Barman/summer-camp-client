@@ -8,35 +8,48 @@ const ManageClasses = () => {
     const [modalOpen, setModalOpen] = useState(false);
 
     useEffect(() => {
+        // Fetch all classes from the API
         getAllClasses()
             .then((classes) => {
                 setClasses(classes);
             })
             .catch((error) => {
-                console.error(error);
+                console.error("Error fetching classes:", error);
             });
     }, [classes]);
 
     const handleApproveClass = (classId) => {
         // Update class status to "approved" in the database
         approveClass(classId);
-        console.log(classId);
+
     };
 
     const handleDenyClass = (classId) => {
-
-
+        // Update class status to denied in the database
+        denyClass(classId);
     };
 
-    const handleSendFeedback = () => {
-
-
+    const handleSendFeedback = (classId) => {
+        // Send feedback to the instructor
+        sendFeedback(classId, feedback)
+            .then(() => {
+                // Feedback sent successfully, update the UI or perform any necessary actions
+                console.log("Feedback sent successfully");
+                handleCloseModal();
+            })
+            .catch((error) => {
+                // Handle any error that occurred during sending feedback
+                console.error("Error sending feedback:", error);
+                // You can show an error message or perform any necessary error handling here
+            });
     };
+
 
     const handleOpenModal = (classId) => {
-
-        const selected = classes.find((classItem) => classItem.id === classId);
+        // Set the selected class
+        const selected = classes.find((classItem) => classItem._id === classId);
         setSelectedClass(selected);
+        setFeedback("");
         setModalOpen(true);
     };
 

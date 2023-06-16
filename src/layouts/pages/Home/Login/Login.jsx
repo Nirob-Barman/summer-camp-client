@@ -206,11 +206,24 @@ const Login = () => {
                             </div>
                             <div className="flex items-center justify-between">
                                 <button
-                                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                    style={{
+                                        backgroundColor: '#007bff',
+                                        color: 'white',
+                                        fontWeight: 'bold',
+                                        padding: '0.5rem 1rem',
+                                        borderRadius: '0.25rem',
+                                        border: 'none',
+                                        cursor: 'pointer',
+                                        outline: 'none',
+                                        boxShadow: 'none',
+                                    }}
+                                    className="hover:bg-blue-700"
                                     type="submit"
                                 >
                                     Login
                                 </button>
+
+
                                 <SocialLogin />
                             </div>
                         </form>

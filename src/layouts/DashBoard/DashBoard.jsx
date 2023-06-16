@@ -1,9 +1,12 @@
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
-import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaUtensils, FaBook, FaUsers, FaFastBackward, FaAddressCard, FaFastForward, FaUserSecret, FaRegClipboard } from 'react-icons/fa';
+import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaBook, FaUsers, FaFastBackward, FaAddressCard, FaFastForward, FaUserSecret, FaRegClipboard } from 'react-icons/fa';
+import { GiClassicalKnowledge } from 'react-icons/gi';
+import { AiOutlinePlusSquare } from 'react-icons/ai';
 import { useContext, useEffect, useState } from "react";
 import { allusers } from "../../apis/auth";
 import { AuthContext } from "../../providers/AuthProvider";
 import NavBar from "../pages/Shared/NavBar/NavBar";
+import DashNavBar from "./DashNavBar";
 // import useCart from "../hooks/useCart";
 
 
@@ -24,18 +27,21 @@ const Dashboard = () => {
             })
     }, []);
 
-    let userRole = '';
-    // console.log(users);
-    // let roles = '';
-    // console.log('roles before updating', roles);
-    {
-        users.map(findUser => {
-            if (findUser.email === user.email) {
-                // roles = findUser.role;
-                userRole = findUser.role;
-            }
-        })
-    }
+    // let userRole = '';
+    // // console.log(users);
+    // // let roles = '';
+    // // console.log('roles before updating', roles);
+    // {
+    //     users.map(findUser => {
+    //         if (findUser.email === user.email) {
+    //             // roles = findUser.role;
+    //             userRole = findUser.role;
+    //         }
+    //     })
+    // }
+
+
+
     // console.log('After updating', roles);
 
 
@@ -60,12 +66,18 @@ const Dashboard = () => {
     // const userRole = 'admin';
     // const userRole = 'instructor';
 
+    const { role } = useContext(AuthContext);
+    const userRole = role;
+    console.log('DashBoard Role ', role);
+
+
+
     const isMobileDevice = window.innerWidth <= 768; // Check if the device is mobile (adjust the breakpoint as needed)
 
 
     return (
         <>
-            <NavBar />
+            <DashNavBar />
 
             <div className="pt-20 drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle"
@@ -100,47 +112,18 @@ const Dashboard = () => {
                                 {
                                     userRole === 'instructor' ? <>
                                         instructor dashboard
-
                                         <li><NavLink to="/dashboard/instructorhome"><FaHome></FaHome>Instructor Home</NavLink></li>
                                         <li><NavLink to="/dashboard/addclasses"><FaAddressCard /> Add a Class</NavLink></li>
-                                        <li><NavLink to="/dashboard/history"><FaWallet></FaWallet> My Classes</NavLink></li>
+                                        <li><NavLink to="/dashboard/myclasses"><GiClassicalKnowledge /> My Classes</NavLink></li>
 
                                     </> : <>
                                         user dashboard
                                         <li><NavLink to="/dashboard/userhome"><FaHome></FaHome> User Home</NavLink></li>
-                                        <li><NavLink to="/dashboard/reservations"><FaCalendarAlt></FaCalendarAlt> Reservations</NavLink></li>
-                                        <li><NavLink to="/dashboard/history"><FaWallet></FaWallet> Payment History</NavLink></li>
-                                        {/* <li>
-                                            <NavLink to="/dashboard/mycart"><FaShoppingCart></FaShoppingCart> DashBoard
-                                            </NavLink>
-                                        </li> */}
+                                        <li><NavLink to="/dashboard/enrolled"><AiOutlinePlusSquare /> Enrolled</NavLink></li>
                                     </>
                                 }
                             </>
                         }
-
-
-
-
-                        {/* {
-                        user ? <>
-                            <li><NavLink to="/dashboard/home"><FaHome></FaHome> Admin Home</NavLink></li>
-                            <li><NavLink to="/dashboard/reservations"> <FaUtensils></FaUtensils> Add Items</NavLink></li>
-                            <li><NavLink to="/dashboard/history"><FaWallet></FaWallet> Manage Items</NavLink></li>
-                            <li><NavLink to="/dashboard/history"><FaBook></FaBook> Manage Bookings</NavLink></li>
-                            <li><NavLink to="/dashboard/allusers"><FaUsers></FaUsers> All Users</NavLink></li>
-                        </> : <>
-                            <li><NavLink to="/dashboard/home"><FaHome></FaHome> User Home</NavLink></li>
-                            <li><NavLink to="/dashboard/reservations"><FaCalendarAlt></FaCalendarAlt> Reservations</NavLink></li>
-                            <li><NavLink to="/dashboard/history"><FaWallet></FaWallet> Payment History</NavLink></li>
-                            <li>
-                                <NavLink to="/dashboard/mycart"><FaShoppingCart></FaShoppingCart> My Cart
-                                    <span className="badge inl badge-secondary">+{cart?.length || 0}</span>
-                                </NavLink>
-
-                            </li>
-                        </>
-                    } */}
 
 
                         <li>

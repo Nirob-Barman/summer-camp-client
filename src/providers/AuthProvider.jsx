@@ -3,6 +3,7 @@ import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStat
 import { app } from '../firebase/firebase.config'
 import { getRole } from '../apis/auth'
 
+
 export const AuthContext = createContext(null)
 
 const auth = getAuth(app)
@@ -68,6 +69,7 @@ const AuthProvider = ({ children }) => {
   const authInfo = {
     user,
     loading,
+    role,
     setLoading,
     createUser,
     signIn,
@@ -75,6 +77,7 @@ const AuthProvider = ({ children }) => {
     resetPassword,
     logOut,
     updateUserProfile,
+    setRole
   }
 
   return (

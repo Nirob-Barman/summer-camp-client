@@ -1,13 +1,16 @@
 import { useContext, useState } from "react";
-import { AuthContext } from "../../../providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthProvider";
+import { addClass } from "../../../apis/classeapi";
+import toast from "react-hot-toast";
 
 const AddClasses = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleAddClass = (event) => {
-
+        // Perform class creation logic and database update here
+        // Set the status field to "pending"
         event.preventDefault();
 
         const classname = event.target.classname.value;
@@ -38,93 +41,93 @@ const AddClasses = () => {
             })
             .catch((err) => console.log(err));
     };
+
+
     return (
 
-
-        <div className="max-w-md mx-auto">
-            <h2 className="text-2xl font-bold mb-4">Add a Class</h2>
-            <form onSubmit={handleAddClass} className="space-y-6">
-                <div className="grid grid-cols-2 gap-4">
-                    <div className="form-control">
-                        <label htmlFor="className" className="label">
-                            Class Name:
-                        </label>
+        // 
+        <div className="bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-lg mx-auto">
+                <h2 className="text-3xl font-extrabold text-gray-900 mb-8 text-center">
+                    Add a Class
+                </h2>
+                <form onSubmit={handleAddClass} className="grid grid-cols-2 gap-6">
+                    <div className="col-span-1">
+                        <label className="text-sm font-medium text-gray-700">Class Name</label>
                         <input
                             type="text"
-                            id="className"
-                            name="className"
-                            className="input input-primary"
+                            name="classname"
+                            placeholder="Class Name"
+                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         />
                     </div>
-                    <div className="form-control">
-                        <label htmlFor="classImage" className="label">
-                            Class Image:
-                        </label>
+                    <div className="col-span-1">
+                        <label className="text-sm font-medium text-gray-700">Available Seats</label>
                         <input
                             type="text"
-                            id="classImage"
-                            name="image"
-                            className="input input-primary"
+                            name="availableSeats"
+                            placeholder="Available Seats"
+                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         />
                     </div>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                    <div className="form-control">
-                        <label htmlFor="instructorName" className="label">
-                            Instructor Name:
-                        </label>
+                    <div className="col-span-1">
+                        <label className="text-sm font-medium text-gray-700">Price</label>
                         <input
                             type="text"
-                            id="instructorName"
+                            name="price"
+                            placeholder="Price"
+                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                        />
+                    </div>
+                    <div className="col-span-1">
+                        <label className="text-sm font-medium text-gray-700">Description</label>
+                        <input
+                            type="text"
+                            name="description"
+                            placeholder="Description"
+                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                        />
+                    </div>
+                    <div className="col-span-2">
+                        <label className="text-sm font-medium text-gray-700">Instructor Name</label>
+                        <input
+                            type="text"
                             name="instructorName"
                             value={user?.displayName}
-                            readOnly
-                            className="input input-primary"
+                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         />
                     </div>
-                    <div className="form-control">
-                        <label htmlFor="instructorEmail" className="label">
-                            Instructor Email:
-                        </label>
+                    <div className="col-span-2">
+                        <label className="text-sm font-medium text-gray-700">Instructor's Email</label>
                         <input
-                            type="email"
-                            id="instructorEmail"
+                            type="text"
                             name="instructorEmail"
                             value={user?.email}
-                            readOnly
-                            className="input input-primary"
+                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         />
                     </div>
-                </div>
-                <div className="form-control">
-                    <label htmlFor="availableSeats" className="label">
-                        Available Seats:
-                    </label>
-                    <input
-                        type="number"
-                        id="availableSeats"
-                        name="availableSeats"
-                        className="input input-primary"
-                    />
-                </div>
-                <div className="form-control">
-                    <label htmlFor="price" className="label">
-                        Price:
-                    </label>
-                    <input
-                        type="number"
-                        id="price"
-                        name="price"
-                        className="input input-primary"
-                    />
-                </div>
-                <div className="flex justify-end">
-                    <button type="submit" className="btn btn-primary">
-                        Add Class
-                    </button>
-                </div>
-            </form>
+                    <div className="col-span-2">
+                        <label className="text-sm font-medium text-gray-700">Photo URL</label>
+                        <input
+                            type="text"
+                            name="image"
+                            placeholder="Photo URL"
+                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                        />
+                    </div>
+                    <div className="col-span-2 flex justify-center">
+                        <button
+                            type="submit"
+                            className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm  bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        >
+                            Add Class
+                        </button>
+                    </div>
+
+                </form>
+            </div>
         </div>
+
 
 
     );

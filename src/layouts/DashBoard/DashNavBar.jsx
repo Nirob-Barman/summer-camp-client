@@ -1,9 +1,8 @@
-import { Link, NavLink } from "react-router-dom";
-import { useContext, useState } from "react";
-import { AuthContext } from "../../../../providers/AuthProvider";
-import { RxAvatar } from 'react-icons/rx';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../providers/AuthProvider';
+import { Link, NavLink } from 'react-router-dom';
 
-const NavBar = () => {
+const DashNavBar = () => {
 
     const { user, logOut } = useContext(AuthContext);
     console.log(user);
@@ -19,16 +18,6 @@ const NavBar = () => {
     const navOptions = (
         <>
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/instructors">Instructors</Link></li>
-            <li><Link to="/classes">Classes</Link></li>
-            <li><Link to="/class">Class</Link></li>
-
-
-            <li>
-                {
-                    user && <Link to='/about'>{user?.displayName }</Link> 
-                }
-            </li>
             
 
 
@@ -50,8 +39,6 @@ const NavBar = () => {
     );
 
     return (
-    
-
         <div className="navbar fixed z-10 bg-opacity-30 max-w-screen-xl bg-black text-white">
             <div className="navbar-start">
                 <div className="dropdown">
@@ -66,23 +53,6 @@ const NavBar = () => {
                 </div>
 
 
-                {/* <NavLink to="/" className="text-xl hover:text-red-500 hover:text-4xl">EliteSportsAcademy</NavLink> */}
-                {/* <NavLink
-                    exact
-                    to="/"
-                    className="text-xl hover:text-red-500 hover:text-4xl"
-                    style={{
-                        transition: 'font-size 0.3s',
-                        fontSize: '1.6rem', // Default font size
-                    }}
-                    activeStyle={{
-                        fontWeight: 'bold',
-                    }}
-                >
-                    EliteSportsAcademy
-                </NavLink> */}
-
-                
                 <div className="navbar">
                     {/* Your other navbar elements */}
                     <div className="navbar-start">
@@ -126,20 +96,19 @@ const NavBar = () => {
             <div className="navbar">
                 {/* Your other navbar elements */}
                 <div className="navbar-end hidden md:flex md:items-center">
-                    <div className="flex items-center justify-center">
-                        {user && user.photoURL ? (
-                            <img
-                                src={user.photoURL}
-                                alt="Profile"
-                                className="rounded-full w-12 h-12"
-                                data-testid="profile-image"
-                            />
-                        ) : (
-                                <>
-                                    <Link to="/login"><RxAvatar className="text-gray-500 w-12 h-12" /></Link>
-                                </>
-                            
-                        )}
+                    <div>
+                        <div className="flex items-center justify-center">
+                            {user && user.photoURL ? (
+                                <img
+                                    src={user.photoURL}
+                                    alt="Profile"
+                                    className="rounded-full w-12 h-12"
+                                    data-testid="profile-image"
+                                />
+                            ) : (
+                                <RxAvatar className="text-gray-500 w-12 h-12" />
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -148,5 +117,4 @@ const NavBar = () => {
     );
 };
 
-export default NavBar;
-
+export default DashNavBar;
