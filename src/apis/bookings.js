@@ -9,7 +9,7 @@ export const addBooking = async (bookdata, user) => {
         price: bookdata.price,
         studentEmail: user.email,
     };
-    const response = await fetch(`http://localhost:5000/bookings`, {
+    const response = await fetch(`https://smc-server.vercel.app/bookings`, {
         method: "POST",
         headers: {
             "content-type": "application/json",
@@ -23,7 +23,7 @@ export const addBooking = async (bookdata, user) => {
 
 // update class  status
 export const updateStatus = async (id, status) => {
-    const response = await fetch(`http://localhost:5000/rooms/status/${id}`, {
+    const response = await fetch(`https://smc-server.vercel.app/rooms/status/${id}`, {
         method: "PATCH",
         headers: {
             "content-type": "application/json",
@@ -36,14 +36,14 @@ export const updateStatus = async (id, status) => {
 
 // Get all bookings for a user by email
 export const getBookings = async (email) => {
-    const response = await fetch(`http://localhost:5000/bookings/${email}`);
+    const response = await fetch(`https://smc-server.vercel.app/bookings/${email}`);
     const data = await response.json();
     return data;
 };
 
 //get all the bookings
 export const getAllBookings = async () => {
-    const response = await fetch(`http://localhost:5000/bookins`);
+    const response = await fetch(`https://smc-server.vercel.app/bookins`);
     const data = await response.json();
     return data;
 };
@@ -51,7 +51,7 @@ export const getAllBookings = async () => {
 
 // delete a booking
 export const deleteBooking = async (id) => {
-    const response = await fetch(`http://localhost:5000/bookings/${id}`, {
+    const response = await fetch(`https://smc-server.vercel.app/bookings/${id}`, {
         method: "DELETE",
         headers: {
             "content-type": "application/json",

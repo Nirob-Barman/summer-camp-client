@@ -26,10 +26,10 @@ const NavBar = () => {
 
             <li>
                 {
-                    user && <Link to='/about'>{user?.displayName }</Link> 
+                    user && <Link to='/about'>{user?.displayName}</Link>
                 }
             </li>
-            
+
 
 
             {
@@ -50,7 +50,7 @@ const NavBar = () => {
     );
 
     return (
-    
+
 
         <div className="navbar fixed z-10 bg-opacity-30 max-w-screen-xl bg-black text-white">
             <div className="navbar-start">
@@ -82,7 +82,7 @@ const NavBar = () => {
                     EliteSportsAcademy
                 </NavLink> */}
 
-                
+
                 <div className="navbar">
                     {/* Your other navbar elements */}
                     <div className="navbar-start">
@@ -135,18 +135,16 @@ const NavBar = () => {
                                 data-testid="profile-image"
                             />
                         ) : (
-                                <>
-                                    <Link to="/login"><RxAvatar className="text-gray-500 w-12 h-12" /></Link>
-                                </>
-                            
+                            <>
+                                <Link to="/login"><RxAvatar className="text-gray-500 w-12 h-12" /></Link>
+                            </>
+
                         )}
                     </div>
                 </div>
             </div>
-
         </div>
     );
 };
 
 export default NavBar;
-

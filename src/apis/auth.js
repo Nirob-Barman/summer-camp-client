@@ -11,7 +11,7 @@ export const saveUser = user => {
     };
 
     axios
-        .put(`http://localhost:5000/users/${user?.email}`, currentUser, {
+        .put(`https://smc-server.vercel.app/users/${user?.email}`, currentUser, {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -30,7 +30,7 @@ export const saveUser = user => {
 //         role: "student",
 //     }
 
-//     fetch(`http://localhost:5000/users/${user?.email}`, {
+//     fetch(`https://smc-server.vercel.app/users/${user?.email}`, {
 //         method: 'PUT',
 //         headers: {
 //             'content-type': 'application/json',
@@ -44,7 +44,7 @@ export const saveUser = user => {
 
 // Get all users
 export const allusers = async () => {
-    const response = await fetch(`http://localhost:5000/users`);
+    const response = await fetch(`https://smc-server.vercel.app/users`);
     const data = await response.json();
     return data;
 };
@@ -56,7 +56,7 @@ export const becomeInstructor = (email) => {
         role: "instructor",
     };
 
-    return fetch(`http://localhost:5000/users/${email}`, {
+    return fetch(`https://smc-server.vercel.app/users/${email}`, {
         method: "PUT",
         headers: {
             "content-type": "application/json",
@@ -71,7 +71,7 @@ export const becomeAdmin = (email) => {
         role: "admin",
     };
 
-    return fetch(`http://localhost:5000/users/${email}`, {
+    return fetch(`https://smc-server.vercel.app/users/${email}`, {
         method: "PUT",
         headers: {
             "content-type": "application/json",
@@ -83,7 +83,7 @@ export const becomeAdmin = (email) => {
 // Get role
 export const getRole = async email => {
     try {
-        const response = await fetch(`http://localhost:5000/users/${email}`);
+        const response = await fetch(`https://smc-server.vercel.app/users/${email}`);
         const user = await response.json();
         return user?.role;
     } catch (error) {

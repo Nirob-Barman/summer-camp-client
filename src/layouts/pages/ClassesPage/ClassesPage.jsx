@@ -1,84 +1,85 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import toast from "react-hot-toast";
+import { AuthContext } from '../../../providers/AuthProvider';
+import { getAllClasses } from '../../../apis/classeapi';
+import { addBooking } from '../../../apis/bookings';
 
 const ClassesPage = () => {
+    const { user, role } = useContext(AuthContext);
     const [classes, setClasses] = useState([]);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [isAdminOrInstructor, setIsAdminOrInstructor] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchClasses = async () => {
-            try {
-                const response = await fetch('/api/classes');
-                const data = await response.json();
-                setClasses(data);
-            } catch (error) {
-                // Handle error
-                console.error(error);
-            }
-        };
-
-        const checkLoginStatus = async () => {
-            try {
-                const response = await fetch('/api/check-login');
-                const data = await response.json();
-
-                setIsLoggedIn(data.isLoggedIn);
-                setIsAdminOrInstructor(data.isAdminOrInstructor);
-            } catch (error) {
-                // Handle error
-                console.error(error);
-            }
-        };
-
-        fetchClasses();
-        checkLoginStatus();
+        // Fetch all approved classes from the API
+        getAllClasses()
+            .then((classes) => {
+                setClasses(classes);
+            })
+            .catch((error) => {
+                console.error('Error fetching classes:', error);
+            });
     }, []);
 
-    const handleSelect = (classId) => {
-        if (!isLoggedIn) {
-            alert('Please log in before selecting the course.');
+
+
+    const handleSelectClass = (classItem) => {
+        // Handle the logic for selecting the class
+        if (!user) {
+            alert('Please log in before selecting a course.');
             return;
         }
 
-        if (isAdminOrInstructor) {
-            alert('You are not allowed to select this course as an admin or instructor.');
+        // Disable selection for admin and instructor
+        if (role === 'admin' || role === 'instructor') {
             return;
         }
 
-        // Handle class selection logic here
-        alert(`Selected class with ID ${classId}`);
+        // Select the class by ID
+        addBooking(classItem, user)
+            .then(() => {
+                
+                toast.success("class booked!");
+                navigate("/dashboard/classes");
+            })
+            .catch((error) => {
+                console.error('Error selecting class:', error);
+            });
     };
-
     return (
         <div>
-            <h1 className='pt-20'>Classes</h1>
-            {classes.map((cls) => (
-                <div
-                    key={cls.id}
-                    className={`my-6 p-4 border ${cls.availableSeats === 0 ? 'bg-red-200' : ''}`}
-                >
-                    <div className="flex items-center mb-4">
-                        <img
-                            src={cls.image}
-                            alt={cls.name}
-                            className="w-16 h-16 rounded-full mr-4"
-                        />
-                        <div>
-                            <h2 className="text-lg font-bold">{cls.name}</h2>
-                            <p className="text-gray-600">Instructor: {cls.instructor}</p>
+            <h2 className="text-2xl font-bold mb-4">Classes</h2>
+            {classes.length === 0 ? (
+                <p>No approved classes found.</p>
+            ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {classes.map((classItem) => (
+                        <div
+                            key={classItem._id}
+                            className={`p-4 bg-white rounded shadow ${classItem.availableSeats === 0 ? 'bg-red-100' : ''
+                                }`}
+                        >
+                            <img src={classItem.image} alt={classItem.name} className="mb-4" />
+                            <h3 className="text-xl font-bold mb-2">{classItem.name}</h3>
+                            <p className="mb-2">Instructor: {classItem.instructorName}</p>
+                            <p className="mb-2">Available Seats: {classItem.availableSeats}</p>
+                            <p className="mb-4">Price: {classItem.price}</p>
+                            <button
+                                className="px-4 py-2 rounded-md bg-blue-500 text-white"
+                                onClick={() => handleSelectClass(classItem)}
+                                disabled={
+
+                                    classItem.availableSeats === 0 ||
+                                    role === 'admin' ||
+                                    role === 'instructor'
+                                }
+                            >
+                                {user ? 'Select' : 'Log in to Select'}
+                            </button>
                         </div>
-                    </div>
-                    <p>Available seats: {cls.availableSeats}</p>
-                    <p>Price: {cls.price}</p>
-                    <button
-                        onClick={() => handleSelect(cls.id)}
-                        disabled={cls.availableSeats === 0 || isAdminOrInstructor}
-                        className="btn mt-4"
-                    >
-                        {isLoggedIn ? 'Select' : 'Log in to Select'}
-                    </button>
+                    ))}
                 </div>
-            ))}
+            )}
         </div>
     );
 };

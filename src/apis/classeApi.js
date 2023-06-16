@@ -1,6 +1,6 @@
 
 export const addClass = async classData => {
-    const response = await fetch(`http://localhost:5000/classes`, {
+    const response = await fetch(`https://smc-server.vercel.app/classes`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
@@ -14,28 +14,28 @@ export const addClass = async classData => {
 
 
 export const getAllClasses = async () => {
-    const response = await fetch(`http://localhost:5000/classes`)
+    const response = await fetch(`https://smc-server.vercel.app/classes`)
     const Classes = await response.json();
     return Classes;
 }
 
 
 export const getClasses = async email => {
-    const response = await fetch(`http://localhost:5000/classes/${email}`)
+    const response = await fetch(`https://smc-server.vercel.app/classes/${email}`)
     const data = await response.json()
     return data
 }
 
 
 export const getClass = async id => {
-    const response = await fetch(`http://localhost:5000/classes/${id}`)
+    const response = await fetch(`https://smc-server.vercel.app/classes/${id}`)
     const data = await response.json()
     return data
 }
 
 
 export const deleteClass = async id => {
-    const response = await fetch(`http://localhost:5000/classes/${id}`, {
+    const response = await fetch(`https://smc-server.vercel.app/classes/${id}`, {
         method: 'DELETE',
         headers: {
             'content-type': 'application/json',
@@ -48,7 +48,7 @@ export const deleteClass = async id => {
 
 
 export const approveClass = (classId) => {
-    return fetch(`http://localhost:5000/classes/${classId}`, {
+    return fetch(`https://smc-server.vercel.app/classes/${classId}`, {
         method: "PATCH",
         headers: {
             "content-type": "application/json",

@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 const About = () => {
 
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch('http://localhost:5000/users')
+        const res = await fetch('https://smc-server.vercel.app/users')
         return res.json();
     })
 

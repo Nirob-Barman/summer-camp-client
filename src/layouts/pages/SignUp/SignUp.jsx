@@ -58,7 +58,7 @@ const SignUp = () => {
                     // const saveUser = { name: data.name, email: data.email };
                     // console.log("User updated", saveUser);
 
-                    // fetch('http://localhost:5000/users', {
+                    // fetch('https://smc-server.vercel.app/users', {
                     //     method: 'POST',
                     //     headers: {
                     //         'content-type': 'application/json'

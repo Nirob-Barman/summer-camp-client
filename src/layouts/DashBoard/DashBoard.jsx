@@ -2,10 +2,10 @@ import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaBook, FaUsers, FaFastBackward, FaAddressCard, FaFastForward, FaUserSecret, FaRegClipboard } from 'react-icons/fa';
 import { GiClassicalKnowledge } from 'react-icons/gi';
 import { AiOutlinePlusSquare } from 'react-icons/ai';
+import { RiCheckLine } from 'react-icons/ri';
 import { useContext, useEffect, useState } from "react";
 import { allusers } from "../../apis/auth";
 import { AuthContext } from "../../providers/AuthProvider";
-import NavBar from "../pages/Shared/NavBar/NavBar";
 import DashNavBar from "./DashNavBar";
 // import useCart from "../hooks/useCart";
 
@@ -18,19 +18,20 @@ const Dashboard = () => {
     // console.log(user.displayName);
     // console.log(user.email);
 
-    const [users, setUsers] = useState([]);
+    // const [users, setUsers] = useState([]);
 
-    useEffect(() => {
-        allusers()
-            .then(users => {
-                setUsers(users)
-            })
-    }, []);
+    // useEffect(() => {
+    //     allusers()
+    //         .then(users => {
+    //             setUsers(users)
+    //         })
+    // }, []);
+
+    // console.log(users);
+    // let roles = '';
+    // console.log('roles before updating', roles);
 
     // let userRole = '';
-    // // console.log(users);
-    // // let roles = '';
-    // // console.log('roles before updating', roles);
     // {
     //     users.map(findUser => {
     //         if (findUser.email === user.email) {
@@ -39,8 +40,7 @@ const Dashboard = () => {
     //         }
     //     })
     // }
-
-
+    // console.log(userRole);
 
     // console.log('After updating', roles);
 
@@ -120,6 +120,7 @@ const Dashboard = () => {
                                         user dashboard
                                         <li><NavLink to="/dashboard/userhome"><FaHome></FaHome> User Home</NavLink></li>
                                         <li><NavLink to="/dashboard/enrolled"><AiOutlinePlusSquare /> Enrolled</NavLink></li>
+                                        <li><NavLink to="/dashboard/classes"><RiCheckLine /> Selected Classes</NavLink></li>
                                     </>
                                 }
                             </>
