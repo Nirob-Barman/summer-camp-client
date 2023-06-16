@@ -8,6 +8,8 @@ import NewsAndUpdates from './NewsAndUpdates/NewsAndUpdates';
 import SocialMediaIntegration from './SocialMediaIntegration/SocialMediaIntegration';
 import CoachingStaffAndFacilities from './CoachingStaffAndFacilities/CoachingStaffAndFacilities';
 import Testimonials from './Testimonials/Testimonials';
+import PopularClasses from './PopularClasses/PopularClasses';
+import PopularInstructors from './PopularInstructors/PopularInstructors';
 
 const Home = () => {
     return (
@@ -25,6 +27,9 @@ const Home = () => {
 
             <Banner />
 
+            <PopularClasses />
+
+            <PopularInstructors />
 
 
             <hr />
