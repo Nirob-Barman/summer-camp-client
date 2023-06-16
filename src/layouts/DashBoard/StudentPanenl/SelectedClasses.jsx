@@ -10,7 +10,7 @@ const SelectedClasses = () => {
     // console.log(user?.email);
 
     useEffect(() => {
-       
+
         getBookings(user?.email)
             // getAllBookings()
             .then((classes) => {
@@ -20,6 +20,7 @@ const SelectedClasses = () => {
 
     const handleDeleteClass = (classId) => {
         // Remove the selected class by ID
+        console.log('Please Delete ', classId);
         deleteBooking(classId)
             .then(() => {
                 // Remove the class from the state

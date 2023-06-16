@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { approveClass, denyClass, getAllClasses, sendFeedback } from '../../../apis/classeapi';
 
 const ManageClasses = () => {
-
     const [classes, setClasses] = useState([]);
     const [selectedClass, setSelectedClass] = useState(null);
     const [feedback, setFeedback] = useState("");
@@ -38,9 +37,7 @@ const ManageClasses = () => {
                 handleCloseModal();
             })
             .catch((error) => {
-                // Handle any error that occurred during sending feedback
                 console.error("Error sending feedback:", error);
-                // You can show an error message or perform any necessary error handling here
             });
     };
 
@@ -95,6 +92,7 @@ const ManageClasses = () => {
                                 <td className="py-2 px-4">{classItem.availableSeats}</td>
                                 <td className="py-2 px-4">{classItem.price}</td>
                                 <td className="py-2 px-4">{classItem.status}</td>
+
                                 <td className="py-2 px-4 flex gap-2 justify-center">
                                     {
                                         <>
@@ -105,6 +103,7 @@ const ManageClasses = () => {
                                             >
                                                 Approve
                                             </button>
+
                                             <button
                                                 onClick={() => handleDenyClass(classItem._id)}
                                                 disabled={classItem.status !== "pending"}
@@ -112,6 +111,7 @@ const ManageClasses = () => {
                                             >
                                                 Deny
                                             </button>
+
                                             <button
                                                 onClick={() => handleOpenModal(classItem._id)}
                                                 disabled={classItem.status !== "pending"}
