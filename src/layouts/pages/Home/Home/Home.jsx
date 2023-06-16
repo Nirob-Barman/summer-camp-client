@@ -1,7 +1,13 @@
 import React from 'react';
 import Banner from './Banner/Banner';
-import SummerCampSection from '../../Home/Home/SummerCampSection/SummerCampSection';
+// import SummerCampSection from '../../Home/Home/SummerCampSection/SummerCampSection';
 import { Helmet } from 'react-helmet';
+import Testimonials from '../../Testimonials/Testimonials';
+import ContactAndSupport from './ContactAndSupport/ContactAndSupport';
+import EventCalendar from './EventCalendar/EventCalendar';
+import NewsAndUpdates from './NewsAndUpdates/NewsAndUpdates';
+import SocialMediaIntegration from './SocialMediaIntegration/SocialMediaIntegration';
+import CoachingStaffAndFacilities from './CoachingStaffAndFacilities/CoachingStaffAndFacilities';
 
 const Home = () => {
     return (
@@ -9,14 +15,43 @@ const Home = () => {
             <Helmet>
                 <title>ESA | Home</title>
             </Helmet>
-            <div className="py-2">
+
+
+            {/* <div className="py-2">
                 <SummerCampSection />
-            </div>
+            </div> */}
+
+
+
             <Banner />
 
-            <div>category</div>
-            <div>class</div>
-            <div>extra</div>
+
+
+            <hr />
+
+
+            <EventCalendar />
+
+            <hr />
+
+            <Testimonials />
+
+            <hr />
+            <NewsAndUpdates />
+
+            <hr />
+
+            <CoachingStaffAndFacilities />
+
+            <hr />
+
+            <SocialMediaIntegration />
+
+            <hr />
+
+            <ContactAndSupport />
+
+
         </div>
     );
 };

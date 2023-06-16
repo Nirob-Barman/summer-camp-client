@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
-import { approveClass, getAllClasses } from "../../../apis/classeapi";
+import React, { useState, useEffect } from 'react';
+import { approveClass, denyClass, getAllClasses, sendFeedback } from '../../../apis/classeapi';
 
 const ManageClasses = () => {
+
     const [classes, setClasses] = useState([]);
     const [selectedClass, setSelectedClass] = useState(null);
     const [feedback, setFeedback] = useState("");
@@ -21,7 +22,6 @@ const ManageClasses = () => {
     const handleApproveClass = (classId) => {
         // Update class status to "approved" in the database
         approveClass(classId);
-
     };
 
     const handleDenyClass = (classId) => {
@@ -44,7 +44,6 @@ const ManageClasses = () => {
             });
     };
 
-
     const handleOpenModal = (classId) => {
         // Set the selected class
         const selected = classes.find((classItem) => classItem._id === classId);
@@ -59,16 +58,15 @@ const ManageClasses = () => {
         setModalOpen(false);
     };
 
-
-    console.log(classes)
+    //  console.log(classes)
 
     return (
-        <div>
-            <h2 className="text-2xl font-bold mb-4">Manage Classes</h2>
+        <div className=" my-10">
+            <h2 className="text-2xl font-bold mb-4 text-center">Manage Classes</h2>
             {classes.length === 0 ? (
                 <p>No classes found.</p>
             ) : (
-                <table className="w-full bg-white border border-gray-200 rounded shadow">
+                <table className="w-full bg-white border border-gray-200 rounded shadow text-center">
                     <thead>
                         <tr className="bg-gray-100">
                             <th className="py-2 px-4">Class Image</th>
@@ -83,7 +81,7 @@ const ManageClasses = () => {
                     </thead>
                     <tbody>
                         {classes.map((classItem) => (
-                            <tr key={classItem.id} className="border-2 border-gray-200">
+                            <tr key={classItem._id} className="border-2 border-gray-200">
                                 <td className="py-2 px-4">
                                     <img
                                         src={classItem.image}
@@ -97,32 +95,32 @@ const ManageClasses = () => {
                                 <td className="py-2 px-4">{classItem.availableSeats}</td>
                                 <td className="py-2 px-4">{classItem.price}</td>
                                 <td className="py-2 px-4">{classItem.status}</td>
-                                <td className="py-2 px-4">
-                                    {classItem.status === "pending" && (
+                                <td className="py-2 px-4 flex gap-2 justify-center">
+                                    {
                                         <>
                                             <button
-                                                onClick={() => handleApproveClass(classItem.id)}
+                                                onClick={() => handleApproveClass(classItem._id)}
                                                 disabled={classItem.status !== "pending"}
                                                 className="px-3 py-2 rounded-md bg-green-500 text-white mr-2"
                                             >
                                                 Approve
                                             </button>
                                             <button
-                                                onClick={() => handleDenyClass(classItem.id)}
+                                                onClick={() => handleDenyClass(classItem._id)}
                                                 disabled={classItem.status !== "pending"}
                                                 className="px-3 py-2 rounded-md bg-red-500 text-white mr-2"
                                             >
                                                 Deny
                                             </button>
                                             <button
-                                                onClick={() => handleOpenModal(classItem.id)}
+                                                onClick={() => handleOpenModal(classItem._id)}
                                                 disabled={classItem.status !== "pending"}
                                                 className="px-3 py-2 rounded-md bg-blue-500 text-white"
                                             >
                                                 Send Feedback
                                             </button>
                                         </>
-                                    )}
+                                    }
                                 </td>
                             </tr>
                         ))}
@@ -142,7 +140,7 @@ const ManageClasses = () => {
                         ></textarea>
                         <div className="flex justify-end">
                             <button
-                                onClick={handleSendFeedback}
+                                onClick={() => handleSendFeedback(selectedClass._id)}
                                 className="px-4 py-2 rounded-md bg-blue-500 text-white"
                             >
                                 Send

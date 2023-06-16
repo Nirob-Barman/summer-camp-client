@@ -1,7 +1,7 @@
 // Add a booking
 export const addBooking = async (bookdata, user) => {
     const bookingData = {
-        className: bookdata.classname,
+        classname: bookdata.classname,
         image: bookdata.image,
         instructorName: bookdata.instructorName,
         instructorEmail: bookdata.instructorEmail,
@@ -21,18 +21,7 @@ export const addBooking = async (bookdata, user) => {
     return data;
 };
 
-// update class  status
-export const updateStatus = async (id, status) => {
-    const response = await fetch(`https://smc-server.vercel.app/rooms/status/${id}`, {
-        method: "PATCH",
-        headers: {
-            "content-type": "application/json",
-        },
-        body: JSON.stringify({ status }),
-    });
-    const data = await response.json();
-    return data;
-};
+
 
 // Get all bookings for a user by email
 export const getBookings = async (email) => {
@@ -40,6 +29,24 @@ export const getBookings = async (email) => {
     const data = await response.json();
     return data;
 };
+
+// payment status
+export const getPayment = (bookingId) => {
+    const currentStatus = {
+        status: "paid",
+    };
+
+    return fetch(`https://smc-server.vercel.app/bookings/${bookingId}`, {
+        method: "PATCH",
+        headers: {
+            "content-type": "application/json",
+        },
+        body: JSON.stringify(currentStatus),
+    })
+        .then((res) => res.json())
+};
+
+
 
 //get all the bookings
 export const getAllBookings = async () => {

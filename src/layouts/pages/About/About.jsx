@@ -11,15 +11,8 @@ const About = () => {
     console.log(users);
 
     return (
-        <div>
-            About Page is under working
-
-            <p>
-                {users.length}
-            </p>
-
-
-
+        <div className='text-center py-10'>
+            Under Process
         </div>
     );
 };

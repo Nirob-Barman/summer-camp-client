@@ -12,6 +12,18 @@ import DashNavBar from "./DashNavBar";
 
 const Dashboard = () => {
 
+    const buttonStyle = {
+        backgroundColor: '#ff9800',
+        color: '#fff',
+        borderRadius: '5px',
+        padding: '10px 20px',
+        border: 'none',
+        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+        fontSize: '16px',
+        cursor: 'pointer',
+    };
+
+
     const { user } = useContext(AuthContext);
     // console.log(user.email);
     // console.log('DashBoard User',user);
@@ -121,6 +133,15 @@ const Dashboard = () => {
                                         <li><NavLink to="/dashboard/userhome"><FaHome></FaHome> User Home</NavLink></li>
                                         <li><NavLink to="/dashboard/enrolled"><AiOutlinePlusSquare /> Enrolled</NavLink></li>
                                         <li><NavLink to="/dashboard/classes"><RiCheckLine /> Selected Classes</NavLink></li>
+
+                                        <div className="divider"></div>
+
+                                        Home Page
+                                                <li>
+                                                    <NavLink to="/classes">
+                                                        <button style={buttonStyle}>Classes</button>
+                                                    </NavLink>
+                                                </li>
                                     </>
                                 }
                             </>

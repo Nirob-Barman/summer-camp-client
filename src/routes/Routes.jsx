@@ -13,7 +13,6 @@ import PrivateRoute from './PrivateRoute'
 import ErrorPage from '../layouts/pages/ErrorPage/ErrorPage'
 import About from '../layouts/pages/About/About'
 import AdminDashboard from '../layouts/DashBoard/AdminDashboard'
-import InstructorDashboard from '../layouts/DashBoard/InstructorDashboard'
 import UserDashboard from '../layouts/DashBoard/UserDashboard'
 import ManageUsers from '../layouts/DashBoard/AdminPanel/ManageUsers'
 import AddClasses from '../layouts/DashBoard/InstructorPanel/AddClasses'
@@ -22,6 +21,8 @@ import Dash from '../layouts/DashBoard/Dash'
 import SelectedClasses from '../layouts/DashBoard/StudentPanenl/SelectedClasses'
 import EnrolledClasses from '../layouts/DashBoard/StudentPanenl/EnrolledClasses'
 import MyClasses from '../layouts/DashBoard/InstructorPanel/MyClasses'
+import InstructorDashboard from '../layouts/DashBoard/InstructorPanel/InstructorDashboard'
+import StudentDashboard from '../layouts/DashBoard/StudentPanenl/StudentDashboard'
 
 export const router = createBrowserRouter([
   {
@@ -97,11 +98,11 @@ export const router = createBrowserRouter([
       },
       {
         path: '/dashboard/myclasses',
-        element: <MyClasses/>
+        element: <MyClasses />
       },
       {
         path: 'userhome',
-        element: <UserDashboard />
+        element: <StudentDashboard />
       },
       {
         path: '/dashboard/classes',
