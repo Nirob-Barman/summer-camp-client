@@ -67,35 +67,4 @@ export default Main;
 
 
 
-// import React, { useState } from "react";
-// import { Outlet } from "react-router-dom";
-// import Footer from "./pages/Shared/Footer/Footer";
-// import NavBar from "./pages/Shared/NavBar/NavBar";
-
-// const Main = () => {
-//   const [isDarkTheme, setIsDarkTheme] = useState(false);
-
-//   const toggleTheme = () => {
-//     setIsDarkTheme((prevTheme) => !prevTheme);
-//   };
-
-//   return (
-//     <div className={isDarkTheme ? "dark-theme" : "light-theme"}>
-//       <div className="text-center">
-//         <button onClick={toggleTheme} className="py-20 theme-toggle-btn">
-//           Toggle Theme
-//         </button>
-//       </div>
-
-//       <NavBar />
-
-//       {/* Rest of your code */}
-//       <Outlet />
-
-//       <Footer />
-//     </div>
-//   );
-// };
-
-// export default Main;
 

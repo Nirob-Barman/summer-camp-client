@@ -1,4 +1,5 @@
-// Add a booking
+import axios from "axios";
+
 export const addBooking = async (bookdata, user) => {
     const bookingData = {
         classname: bookdata.classname,
@@ -9,17 +10,47 @@ export const addBooking = async (bookdata, user) => {
         price: bookdata.price,
         studentEmail: user.email,
     };
-    const response = await fetch(`https://smc-server.vercel.app/bookings`, {
-        method: "POST",
-        headers: {
-            "content-type": "application/json",
-        },
-        body: JSON.stringify(bookingData),
-    });
 
-    const data = await response.json();
-    return data;
+    try {
+        const response = await axios.post(
+            "https://smc-server.vercel.app/bookings",
+            bookingData,
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+        );
+
+        return response.data;
+    } catch (error) {
+        console.error(error);
+        throw new Error("An error occurred while adding the booking.");
+    }
 };
+
+
+// export const addBooking = async (bookdata, user) => {
+//     const bookingData = {
+//         classname: bookdata.classname,
+//         image: bookdata.image,
+//         instructorName: bookdata.instructorName,
+//         instructorEmail: bookdata.instructorEmail,
+//         availableSeats: bookdata.availableSeats,
+//         price: bookdata.price,
+//         studentEmail: user.email,
+//     };
+//     const response = await fetch(`https://smc-server.vercel.app/bookings`, {
+//         method: "POST",
+//         headers: {
+//             "content-type": "application/json",
+//         },
+//         body: JSON.stringify(bookingData),
+//     });
+
+//     const data = await response.json();
+//     return data;
+// };
 
 
 // Get all bookings for a user by email

@@ -3,7 +3,7 @@ import React from 'react';
 const AllUser = () => {
     return (
         <div>
-            all users
+            Under Processing
         </div>
     );
 };
