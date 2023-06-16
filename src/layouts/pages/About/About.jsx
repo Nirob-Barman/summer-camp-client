@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { useQuery } from 'react-query';
 
 const About = () => {
@@ -12,6 +13,11 @@ const About = () => {
 
     return (
         <div className='text-center py-10'>
+
+            <Helmet>
+                <title>ESA | About</title>
+            </Helmet>
+
             Under Process
         </div>
     );

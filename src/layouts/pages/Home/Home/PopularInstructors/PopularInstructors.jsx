@@ -4,7 +4,6 @@ import { allusers } from "../../../../../apis/auth";
 import { Link } from "react-router-dom";
 
 
-
 const PopularInstructors = () => {
     const { user, role } = useContext(AuthContext);
     const [instructors, setInstructors] = useState([]);
@@ -50,9 +49,10 @@ const PopularInstructors = () => {
                         </div>
                     </div>
                 ))}
+
                 <div>
                     <button className="btn btn-primary">
-                        <Link to='/instructors'>See more instructors</Link>
+                        <Link to='/instructors'>Instructors are Here!!!</Link>
                     </button>
                 </div>
             </div>

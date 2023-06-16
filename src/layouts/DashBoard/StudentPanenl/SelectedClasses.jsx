@@ -53,51 +53,41 @@ const SelectedClasses = () => {
     };
 
     return (
+
         <div className="max-w-2xl mx-auto my-8">
-            <h2 className="text-2xl font-bold mb-4 text-center">
-                My Selected Classes
-            </h2>
+            <h2 className="text-2xl font-bold mb-4 text-center">My Selected Classes</h2>
             {selectedClasses.length === 0 ? (
-                <p className='text-center font-bold text-xl text-red-800'>No selected classes found.</p>
+                <p className="text-center font-bold text-xl text-red-800">No selected classes found.</p>
             ) : (
-                <table className="w-full bg-white border border-gray-200 rounded shadow text-center">
-                    <thead>
-                        <tr className="bg-gray-100">
-                            <th className="py-2 px-4">Class image</th>
-                            <th className="py-2 px-4">Class Name</th>
-                            <th className="py-2 px-4">Instructor Name</th>
-                            <th className="py-2 px-4">Price</th>
-                            <th className="py-2 px-4">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {selectedClasses.map((classItem) => (
-                            <tr key={classItem._id} className="border-2 border-gray-200">
-                                <td className="py-2 px-4">
-                                    <img src={classItem.image} alt="" className="w-20 h-20" />
-                                </td>
-                                <td className="py-2 px-4">{classItem.classname}</td>
-                                <td className="py-2 px-4">{classItem.instructorName}</td>
-                                <td className="py-2 px-4">{classItem.price}</td>
-                                <td className="py-2 px-4">
-                                    <button
-                                        className="px-3 py-2 rounded-md bg-red-500 text-white mr-1"
-                                        onClick={() => handleDeleteClass(classItem._id)}
-                                    >
-                                        Delete
-                                    </button>
-                                    <button
-                                        className="px-3 py-2 rounded-md bg-blue-500 text-white"
-                                        onClick={() => handlePayment(classItem._id, classItem.classid)}
-                                        disabled={classItem?.status === "paid"}
-                                    >
-                                        {classItem?.status === "paid" ? "paid" : "pay"}
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                <div className="flex flex-wrap -mx-4">
+                    {selectedClasses.map((classItem) => (
+                        <div key={classItem._id} className="w-full md:w-1/2 lg:w-1/3 p-4">
+                            <div className="bg-white rounded-lg shadow">
+                                <img src={classItem.image} alt="" className="w-full h-48 object-cover rounded-t-lg" />
+                                <div className="p-4">
+                                    <h3 className="text-xl font-bold mb-2">{classItem.classname}</h3>
+                                    <p className="mb-2">Instructor Name: {classItem.instructorName}</p>
+                                    <p className="mb-2">Price: {classItem.price}</p>
+                                    <div className="flex justify-end">
+                                        <button
+                                            className="px-3 py-2 rounded-md bg-red-500 text-white mr-1"
+                                            onClick={() => handleDeleteClass(classItem._id)}
+                                        >
+                                            Delete
+                                        </button>
+                                        <button
+                                            className={`px-3 py-2 rounded-md ${classItem?.status === "paid" ? "bg-green-500" : "bg-blue-500"} text-white`}
+                                            onClick={() => handlePayment(classItem._id, classItem.classid)}
+                                            disabled={classItem?.status === "paid"}
+                                        >
+                                            {classItem?.status === "paid" ? "Paid" : "Pay"}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             )}
         </div>
     );

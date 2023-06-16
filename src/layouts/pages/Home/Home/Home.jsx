@@ -10,6 +10,7 @@ import CoachingStaffAndFacilities from './CoachingStaffAndFacilities/CoachingSta
 import Testimonials from './Testimonials/Testimonials';
 import PopularClasses from './PopularClasses/PopularClasses';
 import PopularInstructors from './PopularInstructors/PopularInstructors';
+import Slider from './Slider/Slider';
 
 const Home = () => {
     return (
@@ -26,6 +27,8 @@ const Home = () => {
 
 
             <Banner />
+
+            <Slider />
 
             <PopularClasses />
 
