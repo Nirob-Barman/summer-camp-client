@@ -23,8 +23,8 @@ const PopularClasses = () => {
             });
     }, []);
     return (
-        
-        
+
+
 
         <div className="max-w-screen mx-auto my-10">
             {classes.length === 0 ? (

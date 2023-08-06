@@ -6,9 +6,14 @@ import toast from "react-hot-toast";
 import { Helmet } from 'react-helmet';
 
 const SelectedClasses = () => {
+
+    console.log('SelectedClasses');
+
     const [selectedClasses, setSelectedClasses] = useState([]);
     const { user } = useContext(AuthContext);
+    console.log('user: ', user);
     const navigate = useNavigate();
+
     // console.log(user?.email);
 
     useEffect(() => {
@@ -24,6 +29,8 @@ const SelectedClasses = () => {
     }, [selectedClasses]);
 
     const handleDeleteClass = (classId) => {
+
+        console.log('handleDeleteClass', classId);
 
         deleteBooking(classId)
             .then(() => {

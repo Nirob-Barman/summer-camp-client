@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.drawer-side a.active {
+    color: blue;
+}
+
+.drawer-side a {
+    background-color: transparent;
+}
+
+/* Light theme */
+.home-page {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Dark theme */
+.dark-theme {
+    background-color: #000;
+    color: #fff;
+}
+
+
+
+
